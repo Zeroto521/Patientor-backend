@@ -4,13 +4,15 @@ interface DiagnoseEntry {
   latin?: string;
 }
 
+type Gender = "male" | "female" | "other";
+
 interface PatientEntry {
   id: string;
   name: string;
   dateOfBirth: string;
   ssn: string;
-  gender: "male" | "female" | "other";
+  gender: Gender;
   occupation: string;
 }
 
-export { DiagnoseEntry, PatientEntry }
+export { DiagnoseEntry, PatientEntry, Gender };
