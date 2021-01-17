@@ -1,8 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import data from '../../data/patients.json';
-import { PatientEntry, Gender } from '../types';
-
+import { PatientEntry } from '../types';
 
 const patients: Array<PatientEntry> = data as Array<PatientEntry>;
 
@@ -16,14 +15,9 @@ const getEntries = (): Omit<PatientEntry, 'ssn'>[] => {
   }));
 };
 
-const addEntry = (
-  name: string,
-  dateOfBirth: string,
-  ssn: string,
-  gender: Gender,
-  occupation: string): PatientEntry => {
+const addEntry = (data: Omit<PatientEntry, 'id'>): PatientEntry => {
   const id: string = uuidv4();
-  const newEntry = { id, name, dateOfBirth, ssn, gender, occupation };
+  const newEntry = { id, ...data };
 
   return newEntry;
 };

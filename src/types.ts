@@ -4,7 +4,11 @@ interface DiagnoseEntry {
   latin?: string;
 }
 
-type Gender = "male" | "female" | "other";
+enum Gender {
+  male = 'male',
+  female = 'female',
+  other = 'other'
+}
 
 interface PatientEntry {
   id: string;
