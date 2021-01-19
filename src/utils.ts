@@ -44,7 +44,8 @@ const toPatientEntry = (object: any): Omit<PatientEntry, 'id'> => {
     dateOfBirth: parseDate(object.dateOfBirth),
     ssn: paseString(object.ssn),
     gender: parseGender(object.gender),
-    occupation: paseString(object.occupation)
+    occupation: paseString(object.occupation),
+    entries: []
   };
 };
 

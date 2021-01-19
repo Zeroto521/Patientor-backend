@@ -9,6 +9,15 @@ router.get('/', (_req, res) => {
   res.send(service.getEntries());
 });
 
+router.get('/:id', (req, res) => {
+  const data = service.findById(req.params.id);
+  if (data) {
+    res.json(data);
+  }
+
+  res.status(404).end();
+});
+
 router.post('/', (req, res) => {
   const data = toPatientEntry(req.body);
   const newEntry = service.addEntry(data);

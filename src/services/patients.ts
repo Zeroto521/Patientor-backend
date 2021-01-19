@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import data from '../../data/patients.json';
-import { PatientEntry } from '../types';
+import { PublicPatient, PatientEntry } from '../types';
 
-const patients: Array<PatientEntry> = data as Array<PatientEntry>;
+const patients: PatientEntry[] = data as PatientEntry[];
 
-const getEntries = (): Omit<PatientEntry, 'ssn'>[] => {
+const getEntries = (): PublicPatient[] => {
   return patients.map(({ id, name, dateOfBirth, gender, occupation }) => ({
     id,
     name,
@@ -15,15 +15,28 @@ const getEntries = (): Omit<PatientEntry, 'ssn'>[] => {
   }));
 };
 
-const addEntry = (data: Omit<PatientEntry, 'id'>): PatientEntry => {
+const findById = (id: string): PatientEntry | undefined => {
+  const patient = patients.find(p => p.id === id);
+  if (patient) {
+    return {
+      ...patient,
+      entries: []
+    };
+  }
+
+  return patient;
+};
+
+function addEntry(data: Omit<PublicPatient, 'id'>): PublicPatient {
   const id: string = uuidv4();
   const newEntry = { id, ...data };
 
   return newEntry;
-};
+}
 
 
 export default {
   getEntries,
+  findById,
   addEntry
 };
