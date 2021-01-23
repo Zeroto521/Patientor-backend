@@ -1,4 +1,4 @@
-interface DiagnoseEntry {
+interface Diagnose {
   code: string;
   name: string;
   latin?: string;
@@ -22,7 +22,7 @@ interface BaseEntry {
   description: string;
   date: string;
   specialist: string;
-  diagnosisCodes?: Array<DiagnoseEntry['code']>;
+  diagnosisCodes?: Array<Diagnose['code']>;
 }
 
 interface HealthCheckEntry extends BaseEntry {
@@ -57,7 +57,7 @@ type Entry =
   | OccupationalHealthcareEntry
   | HospitalEntry;
 
-interface PatientEntry {
+interface Patient {
   id: string;
   name: string;
   dateOfBirth: string;
@@ -67,13 +67,11 @@ interface PatientEntry {
   entries: Entry[];
 }
 
-type PublicPatient = Omit<PatientEntry, 'ssn' | 'entries'>;
+type PublicPatient = Omit<Patient, 'ssn' | 'entries'>;
 
 export {
-  DiagnoseEntry,
-  PatientEntry,
+  Diagnose,
+  Patient,
   PublicPatient,
   Gender,
-  Entry,
-  HealthCheckRating
 };

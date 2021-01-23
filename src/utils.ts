@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Gender, PatientEntry } from './types';
+import { Gender, Patient } from './types';
 
 
 const isString = (text: any): text is string => {
@@ -38,7 +38,7 @@ const parseGender = (gender: any): Gender => {
 };
 
 
-const toPatientEntry = (object: any): Omit<PatientEntry, 'id'> => {
+const toPatientEntry = (object: any): Omit<Patient, 'id'> => {
   return {
     name: paseString(object.name),
     dateOfBirth: parseDate(object.dateOfBirth),
