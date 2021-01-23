@@ -5,6 +5,11 @@ const diagnoses: Array<Diagnose> = data as Array<Diagnose>;
 
 const getEntries = (): Diagnose[] => diagnoses;
 
+const findByCode = (code: string): Diagnose | undefined => {
+  return diagnoses.find(d => d.code === code);
+};
+
 export default {
-  getEntries
+  getEntries,
+  findByCode
 };

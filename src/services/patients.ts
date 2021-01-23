@@ -14,9 +14,7 @@ const getEntries = (): PublicPatient[] => {
 };
 
 const findById = (id: string): Patient | undefined => {
-  const patient = patients.find(p => p.id === id);
-
-  return patient;
+  return patients.find(p => p.id === id);
 };
 
 function addEntry(data: Omit<PublicPatient, 'id'>): PublicPatient {
