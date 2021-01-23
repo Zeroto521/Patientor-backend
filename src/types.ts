@@ -74,4 +74,6 @@ export {
   Patient,
   PublicPatient,
   Gender,
+  Entry,
+  BaseEntry
 };

@@ -1,7 +1,7 @@
 import express from 'express';
 
 import service from '../services/patients';
-import { toPatientEntry } from '../utils';
+import { toEntry, toPatient } from '../utils';
 
 const router = express.Router();
 
@@ -19,10 +19,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const data = toPatientEntry(req.body);
-  const newEntry = service.addEntry(data);
+  const data = toPatient(req.body);
+  const newObject = service.addPatient(data);
 
-  res.json(newEntry);
+  res.json(newObject);
+});
+
+router.post('/:id/entries', (req, res) => {
+  const data = toEntry(req.body);
+  const newObject = service.addEntry(data);
+
+  res.json(newObject);
 });
 
 export default router;
